@@ -356,6 +356,30 @@ class Admin():
             msg = ':eyes: | {} Tried to use `ban` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
+            
+    @bot.command(pass_context = True)
+    async def setup(ctx):
+        user_roles = [r.name.lower() for r in ctx.message.author.roles]
+
+        if "admin" in user_roles:
+            server = ctx.message.server
+
+            everyone = discord.PermissionOverwrite(read_messages = False, send_messages = False, read_message_history = False, add_reactions = True)
+            mine = discord.PermissionOverwrite(read_messages = True)
+        
+            progress = await ctx.bot.say("Setting Myself Up! Please Be Patient :timer:")
+            await asyncio.sleep(1)
+            await ctx.bot.create_channel(server, 'logs', (server.default_role, everyone), (server.me, mine),type = discord.ChannelType.text)
+            progress2 = await ctx.bot.say("Successfully Create Channel Named `logs`")
+            await asyncio.sleep(2)
+            await ctx.bot.delete_message(progress)
+            await ctx.bot.delete_message(progress2)
+            await ctx.bot.say("Setup Complete! Type `m.help` To View My Commands!")
+
+        else:
+            msg = ':eyes: | {} Tried to use `setup` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
+            await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
+            await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
 
 def setup(bot):
     bot.add_cog(Admin)
