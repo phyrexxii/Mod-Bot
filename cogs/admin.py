@@ -264,25 +264,6 @@ class Admin():
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
 
     @bot.command(pass_context = True)
-    async def purge(ctx):
-        """Clears the WHOLE channels History! (Admin Only)"""
-        user_roles = [r.name.lower() for r in ctx.message.author.roles]
-
-        if "admin" in user_roles:
-            await ctx.bot.say("Are you sure? This action can't be undone! yes or no?")
-            response = await ctx.bot.wait_for_message(author=ctx.message.author, channel=ctx.message.channel)
-            response = response.content.lower()
-            if response == "yes":
-                await ctx.bot.purge_from(ctx.message.channel, limit=99999)
-            if response =="no":
-                await ctx.bot.say("Purge Canceled")
-
-        else:
-            msg = ':eyes: | {} Tried to use `purge` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
-            await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
-            await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-    @bot.command(pass_context = True)
     async def addrole(ctx, rolename, user: discord.Member = None):
         """Gives a user a role (Admin Only)"""
         user_roles = [r.name.lower() for r in ctx.message.author.roles]
