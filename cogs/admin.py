@@ -97,7 +97,7 @@ class Admin():
             number = int(number)
             async for x in ctx.bot.logs_from(ctx.message.channel, limit = number):
                 mgs.append(x)
-#            await ctx.bot.delete_messages(mgs)
+            await ctx.bot.delete_messages(mgs)
         else:
             msg = ':eyes: | {} Tried to use `clear` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
