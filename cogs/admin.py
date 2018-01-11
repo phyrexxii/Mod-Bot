@@ -338,7 +338,7 @@ class Admin():
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
             
-    @bot.command(pass_context = True)
+    @bot.command(pass_context = True, hidden = True)
     async def setup(ctx):
         user_roles = [r.name.lower() for r in ctx.message.author.roles]
 
