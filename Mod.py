@@ -176,6 +176,13 @@ async def roleinfo(ctx, *,role: discord.Role = None):
         embed.add_field(name = "Role Created At", value = format(role.created_at))
         embed.set_footer(text= "{} | Requested by: {} at".format(version, ctx.message.author))
         await bot.say(embed = embed)
+        
+@bot.command(pass_context = True)
+async def listservers(ctx):
+    '''Lists The Servers The Bot Is In'''
+    x = '\n'.join(["%s `Server ID:` [%s]"%(server.name, server.id) for server in client.servers])
+    embed = discord.Embed(title = "Servers Im Currently In", description = x, color = 0xFFFFF)
+    return await bot.say(embed = embed)
 
 if not os.environ.get('TOKEN'):
         print("No Token Found")
