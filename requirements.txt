@@ -1,3 +1,4 @@
 discord.py
 asyncio
 datetime
+python-3.6.4
