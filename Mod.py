@@ -181,7 +181,6 @@ async def roleinfo(ctx, *,role: discord.Role = None):
 @bot.event
 async def on_server_join(server):
     embed = discord.Embed(title="__Joined: {}__".format(server.name), color=0x00ff00, timestamp = datetime.datetime.utcnow())
-    embed.add_field(name="Server Name", value=server.name, inline=True)
     embed.add_field(name="Owned By", value=server.owner, inline=True)
     embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
     embed.add_field(name="Server Region", value=server.region, inline=True)
@@ -190,7 +189,6 @@ async def on_server_join(server):
 @bot.event
 async def on_server_remove(server):
     embed = discord.Embed(title="__Removed From: {}__".format(server.name), color=0xff0000, timestamp = datetime.datetime.utcnow())
-    embed.add_field(name="Server Name", value=server.name, inline=True)
     embed.add_field(name="Owned By", value=server.owner, inline=True)
     embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
     embed.add_field(name="Server Region", value=server.region, inline=True)
