@@ -8,7 +8,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from random import randint
 
-bot = commands.Bot(command_prefix = commands.when_mentioned_or ("m."))
+bot = commands.Bot(command_prefix = "m.")
 version = "Mod Bot v0.1"
 logs = discord.Object("401552701835444225")
 
