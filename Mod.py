@@ -11,8 +11,9 @@ import os
 bot = commands.Bot(command_prefix = commands.when_mentioned_or("m."))
 tu = datetime.datetime.now()
 version = "Mod Bot v0.1"
+logs = discord.Object("401552701835444225")
 
-startup_extensions = ["cogs.admin", "cogs.servers"]
+startup_extensions = ["cogs.admin"]
 
 for extension in startup_extensions:
     try:
@@ -176,6 +177,24 @@ async def roleinfo(ctx, *,role: discord.Role = None):
         embed.add_field(name = "Role Created At", value = format(role.created_at))
         embed.set_footer(text= "{} | Requested by: {} at".format(version, ctx.message.author))
         await bot.say(embed = embed)
+
+@bot.event
+async def on_server_join(server):
+    embed = discord.Embed(title="__Joined: {}__".format(server.name), color=0x00ff00, timestamp = datetime.datetime.utcnow())
+    embed.add_field(name="Server Name", value=server.name, inline=True)
+    embed.add_field(name="Owned By", value=server.owner, inline=True)
+    embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
+    embed.add_field(name="Server Region", value=server.region, inline=True)
+    await bot.send_message(logs, embed=embed)
+
+@bot.event
+async def on_server_remove(server):
+    embed = discord.Embed(title="__Removed From: {}__".format(server.name), color=0xff0000, timestamp = datetime.datetime.utcnow())
+    embed.add_field(name="Server Name", value=server.name, inline=True)
+    embed.add_field(name="Owned By", value=server.owner, inline=True)
+    embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
+    embed.add_field(name="Server Region", value=server.region, inline=True)
+    await bot.send_message(logs, embed=embed)
 
 if not os.environ.get('TOKEN'):
         print("No Token Found")
