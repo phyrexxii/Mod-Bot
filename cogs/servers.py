@@ -21,7 +21,7 @@ class Servers():
         embed.add_field(name="Owned By", value=server.owner, inline=True)
         embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
         embed.add_field(name="Server Region", value=server.region, inline=True)
-        await bot.send_message(logs, embed=embed)
+        await ctx.bot.send_message(logs, embed=embed)
 
     @bot.event
     async def on_server_remove(server):
@@ -30,7 +30,7 @@ class Servers():
         embed.add_field(name="Owned By", value=server.owner, inline=True)
         embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
         embed.add_field(name="Server Region", value=server.region, inline=True)
-        await bot.send_message(logs, embed=embed)
+        await ctx.bot.send_message(logs, embed=embed)
     
 def setup(bot):
     bot.add_cog(Servers)
