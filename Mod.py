@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix = commands.when_mentioned_or("m."))
 tu = datetime.datetime.now()
 version = "Mod Bot v0.1"
 
-startup_extensions = ["cogs.admin"]
+startup_extensions = ["cogs.admin", "cogs.servers"]
 
 for extension in startup_extensions:
     try:
