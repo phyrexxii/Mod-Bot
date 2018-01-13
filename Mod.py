@@ -12,7 +12,6 @@ bot = commands.Bot(command_prefix = commands.when_mentioned_or("m."))
 tu = datetime.datetime.now()
 version = "Mod Bot v0.1"
 logs = discord.Object("401552701835444225")
-commands = discord.Object("401833325309722624")
 
 startup_extensions = ["cogs.admin"]
 
@@ -204,18 +203,6 @@ async def on_command_error(error, ctx):
         embed.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
         embed.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
         await bot.send_message(ctx.message.channel, embed= embed)
-        
-@bot.event
-async def on_command(_, ctx):
-    message = ctx.message
-    colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
-    colour = int(colour, 16)
-    embed = discord.Embed(title = "Command Executed!", colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
-    embed.add_field(name = "Server", value = ctx.message.channel.server.name, inline = True)
-    embed.add_field(name = "Channel", value = ctx.message.channel.name, inline = True)
-    embed.add_field(name = "Author", value = ctx.message.author.name)
-    embed.add_field(name = "Content", value = "```{}```".format(ctx.message.clean_content))
-    await bot.send_message(commands, embed = embed)
 
 if not os.environ.get('TOKEN'):
         print("No Token Found")
