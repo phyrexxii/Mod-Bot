@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix = commands.when_mentioned_or("m."))
 tu = datetime.datetime.now()
 version = "Mod Bot v0.1"
 logs = discord.Object("401552701835444225")
-commands = discord.Objects("401833325309722624")
+commands = discord.Object("401833325309722624")
 
 startup_extensions = ["cogs.admin"]
 
