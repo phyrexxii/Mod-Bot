@@ -193,6 +193,16 @@ async def on_server_remove(server):
     embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(logs, embed=embed)
+    
+@bot.event
+async def on_command_error(error, ctx):
+    if isinstance(error, commands.CommandNotFound):
+        return
+    else:
+        embed = discord.Embed(title=":warning: Error!", description="Command Error: `s.{0}`\n{1}: {2}".format(ctx.command, type(error).__name__, error), color=0xff0000)
+        embed.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+        embed.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
+        await bot.send_message(ctx.message.channel, embed= embed)
 
 if not os.environ.get('TOKEN'):
         print("No Token Found")
