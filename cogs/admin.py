@@ -8,7 +8,7 @@ import asyncio
 import time
 import datetime
 
-bot = commands.Bot(commands_prefix = when_mentioned_or ("m."))
+bot = commands.Bot(commands_prefix = "m.")
 
 version = "Mod Bot v0.1"
 
