@@ -55,6 +55,31 @@ async def ping(ctx):
     data = discord.Embed(description = thedata, colour=discord.Colour(value = color))
     data.set_footer(text="Mod Bot v0.1 | Requested by: {}".format(ctx.message.author))
     await bot.say(embed = data)
+    
+@bot.command(pass_context = True)
+async def userinfo(ctx, member: discord.Member = None):
+    if member == None:
+        await bot.say(":x: | Please `Mention` A `User`!")
+    else:
+        user = member
+        ago = (ctx.message.timestamp - user.joined_at).days
+        account_ago = (ctx.message.timestamp - user.created_at).days
+        colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
+        colour = int(colour, 16)
+        embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
+        embed.set_thumbnail(url=member.avatar_url)
+        embed.add_field(name="Name:", value=member.name)
+        embed.add_field(name="Discriminator:", value='#{}'.format(member.discriminator))
+        embed.add_field(name="Nickname:", value=member.nick)
+        embed.add_field(name="ID:", value=member.id)
+        embed.add_field(name="Status:", value=member.status)
+        embed.add_field(name="Game:", value=member.game)
+        embed.add_field(name='In Voice', value=member.voice_channel)
+        embed.add_field(name="Joined Server:", value="{0}, {1} days ago".format(str(user.joined_at.strftime("%A, %b %d, %Y")), ago))
+        embed.add_field(name="Account Created:", value="{0}, {1} days ago".format(str(user.created_at.strftime("%A, %b %d, %Y")), account_ago))
+        embed.add_field(name="Roles:", value= ', '.join([r.name for r in sorted(member.roles, key=lambda r: -r.position)]))
+        embed.add_field(name='Highest Role', value=member.top_role.name)
+        await bot.say(embed = embed)
 
 @bot.command(pass_context = True)
 async def gbans(ctx):
