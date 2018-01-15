@@ -31,12 +31,10 @@ class Admin():
 
             except discord.errors.Forbidden:
                 await ctx.bot.say("I'm Missing `Permissions`. **Please Reivite Me** [Here](https://goo.gl/j2JrMt)")
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `lockdown` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def unlock(ctx):
@@ -58,13 +56,10 @@ class Admin():
 #                await ctx.bot.delete_message(ctx.message)
             except discord.errors.Forbidden:
                 await ctx.bot.say("I'm Missing `Permissions`. **Please Reivite Me** [Here](https://goo.gl/j2JrMt)")
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `unlock` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def kick(ctx, member : discord.Member = None, *, reason = ""):
@@ -87,13 +82,10 @@ class Admin():
 #                await ctx.bot.delete_message(ctx.message)
                 await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), embed = embed)
 
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `kick` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context=True)
     async def clear(ctx, number):
@@ -106,13 +98,10 @@ class Admin():
             async for x in ctx.bot.logs_from(ctx.message.channel, limit = number):
                 mgs.append(x)
             await ctx.bot.delete_messages(mgs)
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `clear` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def mute(ctx, member: discord.Member = None, duration = None, *,reason = ""):
@@ -179,13 +168,10 @@ class Admin():
             await ctx.bot.say(embed = embed)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), embed = embed)
     
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `mute` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
         
     @bot.command(pass_context = True)
     async def erunmute(ctx, member: discord.Member = None, *, reason = ""):
@@ -218,13 +204,10 @@ class Admin():
             await ctx.bot.say(embed = embed)
 #            await ctx.bot.delete_message(ctx.message)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), embed = embed)
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `erunmute` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def dm(ctx, user : discord.Member = None, *, message : str = None):
@@ -246,13 +229,10 @@ class Admin():
                 await ctx.bot.send_message(user, embed=embed)
 #                await ctx.bot.delete_message(ctx.message)
                 await ctx.bot.say(":white_check_mark: | User Has Been Msg'd")
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `dm` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def warn(ctx, member: discord.Member = None, *, reason = ""):
@@ -277,13 +257,10 @@ class Admin():
                 await ctx.bot.say(embed = embed)
                 await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), embed = embed)
 #                await ctx.bot.delete_message(ctx.message)
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `warn` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def addrole(ctx, rolename, user: discord.Member = None):
@@ -305,13 +282,10 @@ class Admin():
                 await ctx.bot.add_roles(user, role)
                 await ctx.bot.say("Added role {} to {}".format(role.name, user.name))
 
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `addrole` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def remrole(ctx, rolename, user: discord.Member = None):
@@ -333,13 +307,10 @@ class Admin():
                 await ctx.bot.remove_roles(user, role)
                 await ctx.bot.say("Removed role {} from {}".format(role.name, user.name))
 
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `remrole` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
     @bot.command(pass_context = True)
     async def ban(ctx, user: discord.Member = None, *,reason = ""):
@@ -361,13 +332,10 @@ class Admin():
                 await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), embed = embed)
                 await ctx.bot.ban(user)
 
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `ban` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
             
     @bot.command(pass_context = True, hidden = True)
     async def setup(ctx):
@@ -388,13 +356,10 @@ class Admin():
             await ctx.bot.delete_message(progress2)
             await ctx.bot.say("Setup Complete! Type `m.help` To View My Commands!")
 
-        try:
+        else:
             msg = ':eyes: | {} Tried to use `setup` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
-
-        except:
-            await ctx.bot.say("Can't `Log` This Event, Please Create A Channel Named `Logs`!")
 
 def setup(bot):
     bot.add_cog(Admin)
