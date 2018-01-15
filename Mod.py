@@ -224,7 +224,7 @@ async def on_command_error(error, ctx):
     if isinstance(error, commands.CommandNotFound):
         return
     else:
-        embed = discord.Embed(title=":warning: Error!", description="Command Error: `{}{}`\n{}: {}".format(ctx.prefix, ctx.command, type(error).__name__, error), color=0xff0000)
+        embed = discord.Embed(title=":warning: Error!", description="Command Error: `{}{}`\n{}: `{}`".format(ctx.prefix, ctx.command, type(error).__name__, error), color=0xff0000)
         embed.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
         embed.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
         await bot.send_message(ctx.message.channel, embed= embed)
