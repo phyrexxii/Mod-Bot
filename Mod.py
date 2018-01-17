@@ -162,8 +162,8 @@ async def botinfo(ctx):
     embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
     embed.add_field(name='Bot Info', value = "I'm made with the library Discord.py Async."
                     " I'm developed by Shutdown.py#2406. "
-                    "If you need any help with me, Join my [devs' server](https://discord.gg/aXZMuCN)."
-                    " Send feedback using the feedback command")
+                    "If you need any help with me, Join my [devs' server](https://discord.gg/X4CJdEM)."
+                    "Send feedback using the feedback command")
     embed.add_field(name='Total Commands', value=(len(bot.commands)))
     embed.add_field(name = 'Invite Me!', value = 'Coming Soon!')
     embed.set_footer(text= "{} | Requested by: {} at".format(version, ctx.message.author))
