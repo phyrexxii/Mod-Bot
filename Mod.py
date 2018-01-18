@@ -12,8 +12,9 @@ bot = commands.Bot(command_prefix = commands.when_mentioned_or("m."))
 tu = datetime.datetime.now()
 version = "Mod Bot v0.1"
 logs = discord.Object("401552701835444225")
+bot.remove_command("help")
 
-startup_extensions = ["cogs.admin"]
+startup_extensions = ["cogs.admin", "cogs.help"]
 
 for extension in startup_extensions:
     try:
