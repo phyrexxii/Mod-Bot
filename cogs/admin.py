@@ -14,7 +14,7 @@ bot = commands.Bot(command_prefix = commands.when_mentioned_or ("m."))
 ideas = discord.Object("403090294683336716")
 issues = discord.Object("403083709617668096")
 
-version = "Mod Bot v0.1"
+version = "Mod Bot v0.2"
 
 class Admin():
 
