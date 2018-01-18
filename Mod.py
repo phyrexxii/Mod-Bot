@@ -10,7 +10,7 @@ import os
 
 bot = commands.Bot(command_prefix = commands.when_mentioned_or("m."))
 tu = datetime.datetime.now()
-version = "Mod Bot v0.1"
+version = "Mod Bot v0.2"
 logs = discord.Object("401552701835444225")
 bot.remove_command("help")
 
