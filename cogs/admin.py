@@ -382,10 +382,10 @@ class Admin():
                                 colour = discord.Colour(value = colour),
                                 timestamp = datetime.datetime.utcnow())
             embed.set_author(name = ctx.message.author.name, icon_url = ctx.message.author.avatar_url)
-            await bot.say(":white_check_mark: Your Suggestion Was Sent! Thank You!")
-            await bot.send_message(ideas, embed = embed)
+            await ctx.bot.say(":white_check_mark: Your Suggestion Was Sent! Thank You!")
+            await ctx.bot.send_message(ideas, embed = embed)
         else:
-            await bot.say("To prevent spam, I've only enabled this command for admins. Why? Because they probably added me!")
+            await ctx.bot.say("To prevent spam, I've only enabled this command for admins. Why? Because they probably added me!")
 
     @bot.command(pass_context = True, aliases=["bug"])
     @commands.cooldown(1, 10, commands.BucketType.user)
@@ -401,15 +401,15 @@ class Admin():
                                 colour = discord.Colour(value = colour),
                                 timestamp = datetime.datetime.utcnow())
             embed.set_author(name = ctx.message.author.name, icon_url = ctx.message.author.avatar_url)
-            await bot.say(":white_check_mark: Your Issue Was Sent! Thank You!")
-            await bot.send_message(issues, embed = embed)
+            await ctx.bot.say(":white_check_mark: Your Issue Was Sent! Thank You!")
+            await ctx.bot.send_message(issues, embed = embed)
         else:
-            await bot.say("To prevent spam, I've only enabled this command for admins. Why? Because they probably added me!")
+            await ctx.bot.say("To prevent spam, I've only enabled this command for admins. Why? Because they probably added me!")
 
     @bot.event
     async def on_command_error(error, ctx):
         if isinstance(error, commands.CommandOnCooldown):
-        await bot.send_message(ctx.message.channel, "Command On Cooldown! Please Try Again In: `{} seconds`".format(error.retry_after))
+        await ctx.bot.send_message(ctx.message.channel, "Command On Cooldown! Please Try Again In: `{} seconds`".format(error.retry_after))
 
         else:
             print('Ignoring exception in command {}:'.format(ctx.command), file = sys.stderr)
