@@ -8,6 +8,7 @@ from discord.ext.commands import Bot
 
 bot = commands.Bot(command_prefix = commands.when_mentioned_or ("m."))
 bot.remove_command("help")
+version = "Mod Bot v0.2"
 
 class help():
 
@@ -22,7 +23,7 @@ class help():
         embed.add_field(name = "General Commands:", value = "`help | ping | botinfo | uptime | count | issue | suggestion`")
         embed.add_field(name = "Utility Commands:", value = "`lockdown | unlock | clear | gbans | serverinfo | roleinfo`")
         embed.add_field(name = "Moderation Commands:", value = "`mute | erunmute | addrole | remrole | dm | warn | ban | kick`")
-        embed.set_footer(text="Mod Bot v0.1 | Requested by: {}".format(ctx.message.author))
+        embed.set_footer(text="{} | Requested by: {}".format(version, ctx.message.author))
         await ctx.bot.say(embed = embed)
 
     @bot.command(pass_context = True)
