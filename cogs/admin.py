@@ -7,8 +7,12 @@ import time
 import asyncio
 import time
 import datetime
+import sys
+import traceback
 
 bot = commands.Bot(command_prefix = commands.when_mentioned_or ("m."))
+ideas = discord.Object("403090294683336716")
+issues = discord.Object("403083709617668096")
 
 version = "Mod Bot v0.1"
 
@@ -210,6 +214,7 @@ class Admin():
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
 
     @bot.command(pass_context = True)
+    @commands.cooldown(1, 20, commands.BucketType.user)
     async def dm(ctx, user : discord.Member = None, *, message : str = None):
         '''Dm a User (Admin Only)'''
         user_roles = [r.name.lower() for r in ctx.message.author.roles]
@@ -263,6 +268,7 @@ class Admin():
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
 
     @bot.command(pass_context = True)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def addrole(ctx, rolename, user: discord.Member = None):
         """Gives a user a role (Admin Only)"""
         user_roles = [r.name.lower() for r in ctx.message.author.roles]
@@ -288,6 +294,7 @@ class Admin():
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
 
     @bot.command(pass_context = True)
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def remrole(ctx, rolename, user: discord.Member = None):
         """Removes the role from the user (Admin Only)"""
         user_roles = [r.name.lower() for r in ctx.message.author.roles]
@@ -360,6 +367,53 @@ class Admin():
             msg = ':eyes: | {} Tried to use `setup` | ID: {}'.format(ctx.message.author, ctx.message.author.id)
             await ctx.bot.send_message(discord.utils.get(ctx.message.server.channels, name="logs"), msg)
             await ctx.bot.say(":x: | Admin Only! | Action has been logged! :page_facing_up:")
+            
+    @bot.command(pass_context = True, aliases=["suggest"])
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    async def suggestion(ctx, *, message: str):
+        """Suggest a Feature"""
+        user_roles = [r.name.lower() for r in ctx.message.author.roles]
+
+        if "admin" in user_roles:
+            colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
+            colour = int(colour, 16)
+            embed = discord.Embed(title = "Suggestion From {}:".format(ctx.message.author),
+                                description = "```{}```".format(message),
+                                colour = discord.Colour(value = colour),
+                                timestamp = datetime.datetime.utcnow())
+            embed.set_author(name = ctx.message.author.name, icon_url = ctx.message.author.avatar_url)
+            await bot.say(":white_check_mark: Your Suggestion Was Sent! Thank You!")
+            await bot.send_message(ideas, embed = embed)
+        else:
+            await bot.say("To prevent spam, I've only enabled this command for admins. Why? Because they probably added me!")
+
+    @bot.command(pass_context = True, aliases=["bug"])
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    async def issue(ctx, *, message: str):
+        """An Issue with my bot? Please Tell Me!"""
+        user_roles = [r.name.lower() for r in ctx.message.author.roles]
+
+        if "admin" in user_roles:
+            colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
+            colour = int(colour, 16)
+            embed = discord.Embed(title = "We Have a Problem!:",
+                                description = "```{}```".format(message),
+                                colour = discord.Colour(value = colour),
+                                timestamp = datetime.datetime.utcnow())
+            embed.set_author(name = ctx.message.author.name, icon_url = ctx.message.author.avatar_url)
+            await bot.say(":white_check_mark: Your Issue Was Sent! Thank You!")
+            await bot.send_message(issues, embed = embed)
+        else:
+            await bot.say("To prevent spam, I've only enabled this command for admins. Why? Because they probably added me!")
+
+    @bot.event
+    async def on_command_error(error, ctx):
+        if isinstance(error, commands.CommandOnCooldown):
+        await bot.send_message(ctx.message.channel, "Command On Cooldown! Please Try Again In: `{} seconds`".format(error.retry_after))
+
+        else:
+            print('Ignoring exception in command {}:'.format(ctx.command), file = sys.stderr)
+            traceback.print_exception(type(error), error, error.__traceback__, file = sys.stderr)
 
 def setup(bot):
     bot.add_cog(Admin)
