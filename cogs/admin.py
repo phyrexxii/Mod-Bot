@@ -409,8 +409,7 @@ class Admin():
     @bot.event
     async def on_command_error(error, ctx):
         if isinstance(error, commands.CommandOnCooldown):
-        await ctx.bot.send_message(ctx.message.channel, "Command On Cooldown! Please Try Again In: `{} seconds`".format(error.retry_after))
-
+            await ctx.bot.send_message(ctx.message.channel, "Command On Cooldown! Please Try Again In: `{} seconds`".format(error.retry_after))
         else:
             print('Ignoring exception in command {}:'.format(ctx.command), file = sys.stderr)
             traceback.print_exception(type(error), error, error.__traceback__, file = sys.stderr)
