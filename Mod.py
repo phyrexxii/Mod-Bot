@@ -34,7 +34,7 @@ async def on_ready():
     print('User Count:',len(set(bot.get_all_members())))
     print("Py Lib Version: %s"%discord.__version__)
     print("===================================")
-    await bot.change_presence(game=discord.Game(name = "m.help | m.botinfo)
+    await bot.change_presence(game=discord.Game(name = "m.help | m.botinfo")
 
 @bot.command(pass_context=True)
 async def ping(ctx):
