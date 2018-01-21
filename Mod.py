@@ -15,9 +15,6 @@ tu = datetime.datetime.now()
 version = "Mod Bot v0.2"
 logs = discord.Object("401552701835444225")
 bot.remove_command("help")
-dbltoken = os.environ.get('DBLT')
-url = "https://discordbots.org/api/bots/399115688792424448/stats"
-headers = {"Authorization" : dbltoken}
 
 startup_extensions = ["cogs.admin", "cogs.help", "cogs.botsorgapi"]
 
@@ -37,9 +34,6 @@ async def on_ready():
     print('User Count:',len(set(bot.get_all_members())))
     print("Py Lib Version: %s"%discord.__version__)
     print("===================================")
-    payload = {"server_count"  : len(bot.servers)}
-    async with aiohttp.ClientSession() as aioclient:
-            await aioclient.post(url, data=payload, headers=headers)
     server = len(bot.servers)
     users = sum(1 for _ in bot.get_all_members())
     while 1==1:
@@ -230,9 +224,6 @@ async def on_server_join(server):
     embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(logs, embed=embed)
-    payload = {"server_count"  : len(bot.servers)}
-    async with aiohttp.ClientSession() as aioclient:
-            await aioclient.post(url, data=payload, headers=headers)
 
 @bot.event
 async def on_server_remove(server):
@@ -241,9 +232,6 @@ async def on_server_remove(server):
     embed.add_field(name="Total Members", value="{0} members".format(server.member_count), inline=True)
     embed.add_field(name="Server Region", value=server.region, inline=True)
     await bot.send_message(logs, embed=embed)
-    payload = {"server_count"  : len(bot.servers)}
-    async with aiohttp.ClientSession() as aioclient:
-            await aioclient.post(url, data=payload, headers=headers)
     
 @bot.event
 async def on_command_error(error, ctx):
