@@ -19,7 +19,7 @@ dbltoken = os.environ.get('DBLT')
 url = "https://discordbots.org/api/bots/399115688792424448/stats"
 headers = {"Authorization" : dbltoken}
 
-startup_extensions = ["cogs.admin", "cogs.help"]
+startup_extensions = ["cogs.admin", "cogs.help", "cogs.botsorgapi"]
 
 for extension in startup_extensions:
     try:
