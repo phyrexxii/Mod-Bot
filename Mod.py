@@ -34,17 +34,7 @@ async def on_ready():
     print('User Count:',len(set(bot.get_all_members())))
     print("Py Lib Version: %s"%discord.__version__)
     print("===================================")
-    server = len(bot.servers)
-    users = sum(1 for _ in bot.get_all_members())
-    while 1==1:
-        await bot.change_presence(game=discord.Game(name='With {} servers'.format(server)))
-        await asyncio.sleep(10)
-        await bot.change_presence(game=discord.Game(name='With {} users'.format(users)))
-        await asyncio.sleep(10)                         
-        await bot.change_presence(game=discord.Game(name='My Prefix m.'))
-        await asyncio.sleep(10)
-        await bot.change_presence(game=discord.Game(name='m.help'))
-        await asyncio.sleep(25)
+    await bot.change_presence(game=discord.Game(name = "m.help | m.botinfo)
 
 @bot.command(pass_context=True)
 async def ping(ctx):
