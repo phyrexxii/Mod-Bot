@@ -8,6 +8,7 @@ import datetime
 import psutil
 import asyncio
 import os
+import aiohttp
 
 bot = commands.Bot(command_prefix = commands.when_mentioned_or("m."))
 tu = datetime.datetime.now()
