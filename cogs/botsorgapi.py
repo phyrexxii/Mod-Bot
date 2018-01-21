@@ -17,7 +17,7 @@ class botsorgapi:
             'server_count': len(self.bot.servers)
         })
         head = {
-            'authorization': os.environ.get('DBLTOKEN'),
+            'authorization': os.environ.get('DBLT'),
             'content-type' : 'application/json'
         }
 
