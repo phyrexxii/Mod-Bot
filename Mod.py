@@ -15,7 +15,7 @@ version = "Mod Bot v0.2"
 logs = discord.Object("401552701835444225")
 bot.remove_command("help")
 
-startup_extensions = ["cogs.admin", "cogs.help"]
+startup_extensions = ["cogs.admin", "cogs.help", "cogs.botsorgapi"]
 
 for extension in startup_extensions:
     try:
