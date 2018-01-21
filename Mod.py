@@ -203,6 +203,17 @@ async def roleinfo(ctx, *,role: discord.Role = None):
         embed.add_field(name = "Role Created At", value = format(role.created_at))
         embed.set_footer(text= "{} | Requested by: {} at".format(version, ctx.message.author))
         await bot.say(embed = embed)
+        
+@bot.command(hidden = True, aliases=['about'])
+async def info():
+        RAM = psutil.virtual_memory()
+        used = RAM.used >> 20
+        percent = RAM.percent
+        CPU  = psutil.cpu_percent()
+        embed = discord.Embed(title="Info")
+        embed.add_field(name="Memory", value=f'{percent}% ({used}MB)')
+        embed.add_field(name="CPU", value=f"{CPU}%")
+        await bot.say(embed=embed)
 
 @bot.event
 async def on_server_join(server):
