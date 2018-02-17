@@ -14,6 +14,7 @@ class help():
 
     @bot.group(pass_context = True)
     async def help(ctx):
+      if ctx.invoked_subcommand is None:
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(title = "Mod Bot Help Menu",
