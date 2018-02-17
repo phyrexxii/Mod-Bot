@@ -382,6 +382,7 @@ class Admin():
                                 colour = discord.Colour(value = colour),
                                 timestamp = datetime.datetime.utcnow())
             embed.set_author(name = ctx.message.author.name, icon_url = ctx.message.author.avatar_url)
+            embed.set_footer(text = ctx.message.author.id)
             await ctx.bot.say(":white_check_mark: Your Suggestion Was Sent! Thank You!")
             await ctx.bot.send_message(ideas, embed = embed)
         else:
@@ -401,6 +402,7 @@ class Admin():
                                 colour = discord.Colour(value = colour),
                                 timestamp = datetime.datetime.utcnow())
             embed.set_author(name = ctx.message.author.name, icon_url = ctx.message.author.avatar_url)
+            embed.set_footer(text = ctx.message.author.id)
             await ctx.bot.say(":white_check_mark: Your Issue Was Sent! Thank You!")
             await ctx.bot.send_message(issues, embed = embed)
         else:

@@ -15,8 +15,10 @@ tu = datetime.datetime.now()
 version = "Mod Bot v0.2"
 logs = discord.Object("401552701835444225")
 bot.remove_command("help")
+errorlogs = discord.Object("414261857524908032")
 
 startup_extensions = ["cogs.admin", "cogs.help", "cogs.botsorgapi"]
+adminids = ["221381001476046849", "342853951353520128"]
 
 for extension in startup_extensions:
     try:
@@ -206,6 +208,15 @@ async def info():
         embed.add_field(name="Memory", value=f'{percent}% ({used}MB)')
         embed.add_field(name="CPU", value=f"{CPU}%")
         await bot.say(embed=embed)
+        
+@bot.command(pass_context=True, hidden = True)
+async def ores(ctx, user: discord.User, *, response):
+  if message.owner.id in adminids:
+    em = discord.Embed(title="Dev team answer!", description="Your issue has been responded to", timestamp = datetime.datetime.utcnow())
+    em.add_field(name = "Answered by {}:".format(ctx.message.author), value=response)
+    await bot.send_message(userl, embed=em)
+  else:
+    return
 
 @bot.event
 async def on_server_join(server):
@@ -232,6 +243,7 @@ async def on_command_error(error, ctx):
         embed.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
         embed.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
         await bot.send_message(ctx.message.channel, embed= embed)
+        await bot.send_message(errorlogs, embed= embed)
 
 if not os.environ.get('TOKEN'):
         print("No Token Found")
