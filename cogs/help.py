@@ -12,22 +12,22 @@ version = "Mod Bot v0.2"
 
 class help():
 
-    @bot.command(pass_context = True)
+    @bot.group(pass_context = True)
     async def help(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(title = "Mod Bot Help Menu",
                               colour = discord.Colour(value = colour),
                               timestamp = datetime.datetime.utcnow())
-        embed.add_field(name = "For Help Using a Command:", value = "Type m.help<command>")
+        embed.add_field(name = "For Help Using a Command:", value = "Type m.help <command>")
         embed.add_field(name = "General Commands:", value = "`help | ping | botinfo | uptime | count | issue | suggestion`")
         embed.add_field(name = "Utility Commands:", value = "`lockdown | unlock | clear | gbans | serverinfo | roleinfo`")
         embed.add_field(name = "Moderation Commands:", value = "`mute | erunmute | addrole | remrole | dm | warn | ban | kick`")
         embed.set_footer(text="{} | Requested by: {}".format(version, ctx.message.author))
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpping(ctx):
+    @help.command(pass_context = True)
+    async def ping(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -36,8 +36,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Check the bots response time```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpbotinfo(ctx):
+    @help.command(pass_context = True)
+    async def botinfo(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -46,8 +46,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Get Information about the bot```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpuptime(ctx):
+    @help.command(pass_context = True)
+    async def uptime(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -56,8 +56,8 @@ class help():
         embed.add_field(name = "Description:", value = "```How long the bots been online```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helplockdown(ctx):
+    @help.command(pass_context = True)
+    async def lockdown(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -66,8 +66,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Locks down a channel. Admins Only can chat!```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpunlock(ctx):
+    @help.command(pass_context = True)
+    async def unlock(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -76,8 +76,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Unlocks the channel so everyone can chat!```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpclear(ctx):
+    @help.command(pass_context = True)
+    async def clear(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -86,8 +86,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Clears the chat From 2 - 100 Messages```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpgbans(ctx):
+    @help.command(pass_context = True)
+    async def gbans(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -96,8 +96,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Gets a list of users banned from the server```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpserverinfo(ctx):
+    @help.command(pass_context = True)
+    async def serverinfo(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -106,8 +106,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Shows detailed info about the server```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helproleinfo(ctx):
+    @help.command(pass_context = True)
+    async def roleinfo(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -116,8 +116,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Gets info about a role```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpmute(ctx):
+    @help.command(pass_context = True)
+    async def mute(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -126,8 +126,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Mutes a user for a time and duration. This command auto-unmutes after time is up```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helperunmute(ctx):
+    @help.command(pass_context = True)
+    async def erunmute(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -136,8 +136,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Unmuted a user earlier than the muted duration```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpaddrole(ctx):
+    @help.command(pass_context = True)
+    async def addrole(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -146,8 +146,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Adds a role to the specified user```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpremrole(ctx):
+    @help.command(pass_context = True)
+    async def remrole(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -156,8 +156,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Removes a role for a user```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpdm(ctx):
+    @help.command(pass_context = True)
+    async def dm(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -166,8 +166,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Dms a user a message```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpwarn(ctx):
+    @help.command(pass_context = True)
+    async def warn(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -176,8 +176,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Warns a user with a reason```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpban(ctx):
+    @help.command(pass_context = True)
+    async def ban(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -186,8 +186,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Bans a user with a reason```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpkick(ctx):
+    @help.command(pass_context = True)
+    async def kick(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -196,8 +196,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Kicks a user from the server with a reason```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpissue(ctx):
+    @help.command(pass_context = True)
+    async def issue(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -206,8 +206,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Tells me an issue(s) you have with the bot```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpsuggestion(ctx):
+    @help.command(pass_context = True)
+    async def suggestion(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
@@ -216,8 +216,8 @@ class help():
         embed.add_field(name = "Description:", value = "```Tells me a sugestion about the bot. You can tell me anything, and chances are i might add it to the bot!```")
         await ctx.bot.say(embed = embed)
 
-    @bot.command(pass_context = True)
-    async def helpcount(ctx):
+    @help.command(pass_context = True)
+    async def count(ctx):
         colour = ''.join([random.choice('0123456789ABCDEF') for x in range(6)])
         colour = int(colour, 16)
         embed = discord.Embed(colour = discord.Colour(value = colour), timestamp = datetime.datetime.utcnow())
