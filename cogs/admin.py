@@ -230,7 +230,7 @@ class Admin():
                 embed=discord.Embed(title="Moderator Message", description="Do not reply we will not recieve the message", colour=discord.Colour(value=color), timestamp = datetime.datetime.utcnow())
                 embed.add_field(name="Message:", value = message, inline = False)
                 embed.set_footer(text = version)
-                await ctx.message.delete()
+#                await ctx.message.delete()
                 await ctx.bot.send_message(user, embed=embed)
 #                await ctx.bot.delete_message(ctx.message)
                 await ctx.bot.say(":white_check_mark: | User Has Been Msg'd")
