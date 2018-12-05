@@ -54,7 +54,7 @@ async def ping(ctx):
 @bot.command(pass_context = True)
 async def userinfo(ctx, member: discord.Member = None):
     if member == None:
-        await bot.say(":x: | Please `Mention` A `User`!")
+        await bot.say(":x: | Please `Mention` A `User`!!")
     else:
         user = member
         ago = (ctx.message.timestamp - user.joined_at).days
