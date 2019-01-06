@@ -218,7 +218,7 @@ async def ores(ctx, user: discord.User, *, response):
   else:
     return
 
-@bot.event
+'''@bot.event
 async def on_server_join(server):
     embed = discord.Embed(title="__Joined: {}__".format(server.name), color=0x00ff00, timestamp = datetime.datetime.utcnow())
     embed.add_field(name="Owned By", value=server.owner, inline=True)
@@ -243,7 +243,7 @@ async def on_command_error(error, ctx):
         embed.set_footer(text=ctx.message.author, icon_url=ctx.message.author.avatar_url)
         embed.set_author(name=ctx.message.server.name, icon_url=ctx.message.server.icon_url)
         await bot.send_message(ctx.message.channel, embed= embed)
-        await bot.send_message(errorlogs, embed= embed)
+        await bot.send_message(errorlogs, embed= embed)'''
 
 if not os.environ.get('TOKEN'):
         print("No Token Found")
